@@ -1,17 +1,22 @@
-document.getElementById("submitBtn").addEventListener("click", function () {
-    const num = parseInt(document.getElementById("numberInput").value, 10);
-    const result = document.getElementById("result");
+if (typeof document !== "undefined") {
+    const submitBtn = document.getElementById("submitBtn");
+    if (submitBtn) {
+        submitBtn.addEventListener("click", function () {
+            const num = parseInt(document.getElementById("numberInput").value, 10);
+            const result = document.getElementById("result");
 
-    if (isPrime(num)) {
-        result.textContent = "Yes, it is a prime number.";
-    } else {
-        const previous = previousPrime(num);
-        const previousText = previous === null
-            ? "there is no previous prime number"
-            : `the previous prime number is ${previous}`;
-        result.textContent = `No, ${num} it is not a prime number. The next prime number is ${nextPrime(num)} and ${previousText}.`;
+            if (isPrime(num)) {
+                result.textContent = "Yes, it is a prime number.";
+            } else {
+                const previous = previousPrime(num);
+                const previousText = previous === null
+                    ? "there is no previous prime number"
+                    : `the previous prime number is ${previous}`;
+                result.textContent = `No, ${num} it is not a prime number. The next prime number is ${nextPrime(num)} and ${previousText}.`;
+            }
+        });
     }
-});
+}
 
 function isPrime(n) {
     if (n <= 1) return false;
@@ -39,4 +44,8 @@ function previousPrime(n) {
         candidate--;
     }
     return null;
+}
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = { isPrime, nextPrime, previousPrime };
 }
