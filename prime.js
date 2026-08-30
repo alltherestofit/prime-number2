@@ -3,9 +3,9 @@ document.getElementById("submitBtn").addEventListener("click", function () {
     const result = document.getElementById("result");
 
     if (isPrime(num)) {
-        result.textContent = "Yes";
+        result.textContent = "Yes, it is a prime number.";
     } else {
-        result.textContent = "No";
+        result.textContent = "No, it is not a prime number";
     }
 });
 
