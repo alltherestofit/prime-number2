@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Is Prime???</title>
+    <script src="prime.js" defer></script>
+</head>
+<body>
+    <h1>Is Prime???</h1>
+
+    <form id="primeForm">
+        <label for="numberInput">Enter a number:</label><br>
+        <input 
+            type="number" 
+            id="numberInput" 
+            name="numberInput" 
+            maxlength="6"
+            oninput="this.value = this.value.slice(0, 6)"
+            required
+        >
+        <br><br>
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
+
+    <h2 id="result"></h2>
+</body>
