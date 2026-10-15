@@ -62,8 +62,10 @@ describe("form integration", () => {
     beforeEach(() => {
         jest.resetModules();
         document.body.innerHTML = `
-            <input type="number" id="numberInput">
-            <button type="button" id="submitBtn">Submit</button>
+            <form id="primeForm">
+                <input type="number" id="numberInput">
+                <button type="submit" id="submitBtn">Submit</button>
+            </form>
             <h2 id="result"></h2>
         `;
         require("./prime");
@@ -96,6 +98,14 @@ describe("form integration", () => {
     test("1 reports no previous prime in the message", () => {
         expect(submit("1")).toBe(
             "No, 1 is not a prime number. The next prime number is 2 and there is no previous prime number."
+        );
+    });
+
+    test("pressing Enter submits the form", () => {
+        document.getElementById("numberInput").value = "7";
+        document.getElementById("primeForm").requestSubmit();
+        expect(document.getElementById("result").textContent).toBe(
+            "Yes, it is a prime number. The next prime number is 11 and the previous prime number is 5."
         );
     });
 
