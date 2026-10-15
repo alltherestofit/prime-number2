@@ -5,21 +5,23 @@ if (typeof document !== "undefined") {
             const num = parseInt(document.getElementById("numberInput").value, 10);
             const result = document.getElementById("result");
 
-            if (isPrime(num)) {
+            if (!Number.isInteger(num)) {
+                result.textContent = "Please enter a whole number.";
+            } else if (isPrime(num)) {
                 result.textContent = "Yes, it is a prime number.";
             } else {
                 const previous = previousPrime(num);
                 const previousText = previous === null
                     ? "there is no previous prime number"
                     : `the previous prime number is ${previous}`;
-                result.textContent = `No, ${num} it is not a prime number. The next prime number is ${nextPrime(num)} and ${previousText}.`;
+                result.textContent = `No, ${num} is not a prime number. The next prime number is ${nextPrime(num)} and ${previousText}.`;
             }
         });
     }
 }
 
 function isPrime(n) {
-    if (n <= 1) return false;
+    if (!Number.isInteger(n) || n <= 1) return false;
     if (n <= 3) return true;
     if (n % 2 === 0 || n % 3 === 0) return false;
 

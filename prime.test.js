@@ -17,6 +17,10 @@ describe("isPrime", () => {
         expect(isPrime(-5)).toBe(false);
     });
 
+    test.each([NaN, 7.5, Infinity])("%p is not prime", (n) => {
+        expect(isPrime(n)).toBe(false);
+    });
+
     test.each([25, 49])("%i (perfect square near the 6k±1 boundary) is not prime", (n) => {
         expect(isPrime(n)).toBe(false);
     });
@@ -73,7 +77,7 @@ describe("form integration", () => {
 
     test("100 reports next and previous primes", () => {
         expect(submit("100")).toBe(
-            "No, 100 it is not a prime number. The next prime number is 101 and the previous prime number is 97."
+            "No, 100 is not a prime number. The next prime number is 101 and the previous prime number is 97."
         );
     });
 
@@ -87,7 +91,11 @@ describe("form integration", () => {
 
     test("1 reports no previous prime in the message", () => {
         expect(submit("1")).toBe(
-            "No, 1 it is not a prime number. The next prime number is 2 and there is no previous prime number."
+            "No, 1 is not a prime number. The next prime number is 2 and there is no previous prime number."
         );
+    });
+
+    test.each(["", "abc"])("%p asks for a whole number", (value) => {
+        expect(submit(value)).toBe("Please enter a whole number.");
     });
 });
