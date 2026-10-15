@@ -81,12 +81,16 @@ describe("form integration", () => {
         );
     });
 
-    test("7 reports a positive prime message", () => {
-        expect(submit("7")).toBe("Yes, it is a prime number.");
+    test("7 reports a positive prime message with next and previous primes", () => {
+        expect(submit("7")).toBe(
+            "Yes, it is a prime number. The next prime number is 11 and the previous prime number is 5."
+        );
     });
 
     test("2 has no previous prime", () => {
-        expect(submit("2")).toBe("Yes, it is a prime number.");
+        expect(submit("2")).toBe(
+            "Yes, it is a prime number. The next prime number is 3 and there is no previous prime number."
+        );
     });
 
     test("1 reports no previous prime in the message", () => {
