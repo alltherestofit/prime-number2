@@ -7,14 +7,15 @@ if (typeof document !== "undefined") {
 
             if (!Number.isInteger(num)) {
                 result.textContent = "Please enter a whole number.";
-            } else if (isPrime(num)) {
-                result.textContent = "Yes, it is a prime number.";
             } else {
+                const verdict = isPrime(num)
+                    ? "Yes, it is a prime number."
+                    : `No, ${num} is not a prime number.`;
                 const previous = previousPrime(num);
                 const previousText = previous === null
                     ? "there is no previous prime number"
                     : `the previous prime number is ${previous}`;
-                result.textContent = `No, ${num} is not a prime number. The next prime number is ${nextPrime(num)} and ${previousText}.`;
+                result.textContent = `${verdict} The next prime number is ${nextPrime(num)} and ${previousText}.`;
             }
         });
     }
