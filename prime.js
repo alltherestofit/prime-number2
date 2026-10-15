@@ -1,7 +1,8 @@
 if (typeof document !== "undefined") {
-    const submitBtn = document.getElementById("submitBtn");
-    if (submitBtn) {
-        submitBtn.addEventListener("click", function () {
+    const primeForm = document.getElementById("primeForm");
+    if (primeForm) {
+        primeForm.addEventListener("submit", function (event) {
+            event.preventDefault();
             const num = parseInt(document.getElementById("numberInput").value, 10);
             const result = document.getElementById("result");
 
